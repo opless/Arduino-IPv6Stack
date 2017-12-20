@@ -20,11 +20,7 @@
 #ifndef XBee_h
 #define XBee_h
 
-#if defined(ARDUINO) && ARDUINO >= 100
-	#include "Arduino.h"
-#else
-	#include "WProgram.h"
-#endif
+#include "common.h"
 
 #include <inttypes.h>
 

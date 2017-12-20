@@ -44,6 +44,8 @@
  */
 
 #include "ctimer.h"
+void ctimer_process_init();
+
 #include "contiki_conf.h"
 #include "list.h"
 

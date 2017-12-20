@@ -565,7 +565,7 @@ uip_ds6_addr_add(uip_ipaddr_t *ipaddr, unsigned long vlifetime, uint8_t type)
   return NULL;
 }
 
-/*---------------------------------------------------------------------------
+/*--------------------------------------------------------------------------- */
 uip_ds6_addr_t *
 uip_ds6_addr_add_preferred(uip_ipaddr_t *ipaddr, unsigned long vlifetime, uint8_t type) //ADDED ALE
 {

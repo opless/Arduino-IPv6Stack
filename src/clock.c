@@ -30,7 +30,7 @@
  *
  */
 
-#include <Arduino.h>
+#include "common.h" 
 
 typedef uint32_t clock_time_t;
 static clock_time_t global_system_ticks = 0;

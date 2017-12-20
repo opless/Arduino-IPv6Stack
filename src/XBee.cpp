@@ -19,13 +19,9 @@
 
 #include "XBee.h"
 
-#if defined(ARDUINO) && ARDUINO >= 100
-	#include "Arduino.h"
-#else
-	#include "WProgram.h"
-#endif
+#include "common.h"
 
-#include "HardwareSerial.h"
+//#include "HardwareSerial.h"
 
 XBeeResponse::XBeeResponse() {
 

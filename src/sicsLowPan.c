@@ -873,7 +873,8 @@ uncompress_hdr_hc06(uint16_t ip_len, uip_lladdr_t *uip_lladdr_sender, uip_lladdr
     	if (iphc1<<6){//Last two bits must be SICSLOWPAN_IPHC_DAM_00
     		//Not supported
     		////PRINTF("sicslowpan uncompress_hdr: error DAM must be 00 if M=1 and DAC=1. Only supported case");
-    		return 0;
+    		//return 0;
+    		return;
     	}
         uint8_t dci = (iphc1 & SICSLOWPAN_IPHC_CID) ? RIME_IPHC_BUF[2] & 0x0f : 0;
 		context = addr_context_lookup_by_number(dci);
@@ -881,7 +882,8 @@ uncompress_hdr_hc06(uint16_t ip_len, uip_lladdr_t *uip_lladdr_sender, uip_lladdr
 		/* all valid cases below need the context! */
 		if(context == NULL) {
 			////PRINTF("sicslowpan uncompress_hdr: error context not found in multicast context based decompression");
-			return 0;
+			//return 0;
+			return ;
 		}
 		//The address is like: ffXX:XXLL:PPPP:PPPP:PPPP:PPPP:XXXX:XXXX
 		//Take the second and third bytes from the compressed packet received
