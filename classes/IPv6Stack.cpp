@@ -49,7 +49,7 @@ extern "C" {
         #include "rpl.h"
 	#include <string.h>	
 }
-#include "XBee.h"
+//#include "XBee.h"
 #include "IPv6Stack.h"
 #include "arduino_debug.h"
 

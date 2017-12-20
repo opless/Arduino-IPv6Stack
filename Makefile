@@ -1,45 +1,52 @@
-CFLAGS=-I src
+CFLAGS=-I src 
+CXXFLAGS=-I classes -I src
 CSRC=$(sort $(wildcard src/*.c))
 COBJ=$(patsubst src/%.c,build/%.o,$(CSRC))
 
-XSRC=$(sort $(wildcard src/*.cpp))
-COBJ+= $(patsubst src/%.cpp,build/%.o,$(XSRC))
+XSRC=$(sort $(wildcard classes/*.cpp))
+COBJ+= $(patsubst classes/%.cpp,build/%.o,$(XSRC))
 
-all: build testrun
+#VPATH=src
+
+all: testrun
+
+
 
 .PHONY: clean
 clean:
+	@echo "==================="
+	@echo "=====  CLEAN  ====="
+	@echo "==================="
 	-rm -rf build testrun
-	echo $(COBJ)
-
-deps: $(CSRC) $(XSRC)
-	$(CXX) -MD -E $(CSRC) $(XSRC) > /dev/null
-	cat *.d > build/alldeps.d
-	rm *.d
-
+#	echo $(COBJ)
 
 
 build:
+	@echo "===================="
+	@echo "= CREATE BUILD DIR ="
+	@echo "===================="
 	-mkdir build
-#	echo $(OBJS)
 #	echo $(BUILT_OBJS)
 
 #%.o:src/%.cpp  
 #	##$(CXX) -c $(CFLAGS) $< -o $@
 
-#build/%.o:src/%.c  
-#	$(CXX) -c $(CFLAGS) $< -o $@
+build/%.o:classes/%.cpp  
+	$(CXX) -c $(CXXFLAGS) $< -o $@
+
+
+build/%.o:src/%.c  
+	$(CC) -c $(CFLAGS) $< -o $@
 
 #testrun: main.c $(BOBJSA) $(BOBJSB) $(BOBJSC)
 #$(CC) $(CFLAGS) -o $@ main.c $(BUILT_OBJS) 
 
 #testrun: $(COBJ) $(XOBJ)
 #testrun: $(XOBJ)
-testrun: $(COBJ)
+testrun: main.c $(COBJ)
+	@echo testrun wants $(COBJ)
 
+#run: all
+#	./testrun
 
-run: all
-	./testrun
-
--include build/alldeps.d
 

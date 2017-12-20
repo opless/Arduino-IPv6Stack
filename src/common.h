@@ -6,6 +6,8 @@
 #include <string.h>
 #include <math.h>
 
+#include <stdint.h>
+
 
 // arduno definitions...
 unsigned long millis();
