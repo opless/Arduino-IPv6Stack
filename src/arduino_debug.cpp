@@ -2,6 +2,7 @@
 #include "common.h"
 #include "uip.h"
 #include "arduino_debug.h"
+#include <stdio.h>
 
 void arduino_debug_init() {
     #if ARDUINO_DEBUG
@@ -32,7 +33,7 @@ void arduino_debug_dec(long b) {
     #endif
 }
     
-void arduino_debug_address(uip_ip6addr_t* address) {
+void arduino_debug_address(const uip_ip6addr_t* address) {
   #if ARDUINO_DEBUG
     fprintf(stderr, "LOG: ");
     int i;
@@ -51,7 +52,7 @@ void arduino_debug_address(uip_ip6addr_t* address) {
     #endif
 }
 
-void arduino_debug_lladdr(uip_lladdr_t* address){
+void arduino_debug_lladdr(const uip_lladdr_t* address){
   #if ARDUINO_DEBUG
     fprintf(stderr, "LOG: ");
     int i;

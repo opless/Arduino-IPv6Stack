@@ -49,7 +49,10 @@
 #define DEBUG DEBUG_PRINT
 #include "uip_debug.h"
 
-#define ANNOTATE 
+#ifdef ANNOTATE
+#undef ANNOTATE
+#endif // clear existing definition to stop warning
+#define ANNOTATE(x,y) 
 
 #ifdef UIP_CONF_DS6_NEIGHBOR_STATE_CHANGED
 #define NEIGHBOR_STATE_CHANGED(n) UIP_CONF_DS6_NEIGHBOR_STATE_CHANGED(n)
